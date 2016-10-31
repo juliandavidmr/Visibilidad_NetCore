@@ -1,17 +1,17 @@
 FROM microsoft/dotnet:latest
 
-RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && rm -rf /var/lib/apt/lists/*
-
-COPY . /app
+RUN apt-get update
+RUN wget -qO- https://deb.nodesource.com/setup_4.x | bash -
+RUN apt-get install -y build-essential nodejs
 
 WORKDIR /app
 
+COPY project.json .
 RUN ["dotnet", "restore"]
 
+COPY . /app
 RUN ["dotnet", "build"]
-
-RUN ["dotnet", "ef", "database", "update"]
 
 EXPOSE 5000/tcp
 
-CMD ["dotnet", "run", "--server.urls", "http://*:5000"]
+ENTRYPOINT ["dotnet", "run", "--server.urls", "http://0.0.0.0:5000"]
