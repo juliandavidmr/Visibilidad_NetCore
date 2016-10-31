@@ -6,16 +6,17 @@ import FetchData from './components/FetchData';
 import Counter from './components/Counter';
 import About from './components/About';
 
-export default <Route component={ Layout }>
-    <Route path='/' components={{ body: Home }} />
-    <Route path='/counter' components={{ body: Counter }} />
-    <Route path='/fetchdata' components={{ body: FetchData }}>
-        <Route path='(:startDateIndex)' /> { /* Optional route segment that does not affect NavMenu highlighting */ }
-    </Route>
-    <Route path='/about' components={{ body: About }} />
-</Route>;
+export default
+	<Route component={Layout}>
+		<Route path='/' components={{ body: Home }} />
+		<Route path='/counter' components={{ body: Counter }} />
+		<Route path='/fetchdata' components={{ body: FetchData }}>
+			<Route path='(:startDateIndex)' /> { /* Optional route segment that does not affect NavMenu highlighting */}
+		</Route>
+		<Route path='/acercade' components={{ body: About }} />
+	</Route>;
 
 // Enable Hot Module Replacement (HMR)
 if (module.hot) {
-    module.hot.accept();
+	module.hot.accept();
 }

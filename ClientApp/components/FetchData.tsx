@@ -70,5 +70,6 @@ const provider = provide(
     (state: ApplicationState) => state.weatherForecasts, // Select which part of global state maps to this component
     WeatherForecastsState.actionCreators                 // Select which action creators should be exposed to this component
 ).withExternalProps<{ params: RouteParams }>();          // Also include a 'params' property on WeatherForecastProps
+
 type WeatherForecastProps = typeof provider.allProps;
 export default provider.connect(FetchData);

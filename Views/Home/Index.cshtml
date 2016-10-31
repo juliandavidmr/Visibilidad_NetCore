@@ -1,9 +1,45 @@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Pagina principal";
 }
 
-<div id="react-app" asp-prerender-module="ClientApp/dist/main-server">Loading...</div>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'/>
+
+<!-- Font awesome -->
+<link rel="stylesheet" href="~/assets/css/font-awesome.css" asp-append-version="true" />
+
+<!-- Slick -->
+<link rel="stylesheet" href="~/assets/css/slick.css" asp-append-version="true" />   
+
+<!-- Fancybox slider -->
+<link rel="stylesheet" href="~/assets/css/jquery.fancybox.css" asp-append-version="true" />
+
+<!-- Theme color -->
+<link id="switcher" href="~/assets/css/default-theme.css" rel="stylesheet">
+
+<!-- Main style sheet -->
+<link href="~/assets/css/style.css" rel="stylesheet">    
+
+<div id="react-app" asp-prerender-module="ClientApp/dist/main-server">Cargando...</div>
 
 @section scripts {
     <script src="~/dist/main-client.js" asp-append-version="true"></script>
 }
+
+
+<script src="~/assets/js/jquery-2.2.4.min.js"></script>
+
+<script src="~/assets/js/bootstrap.min.js"></script>
+
+<!-- Slick slider -->
+<script type="text/javascript" src="~/assets/js/js/slick.js"></script>
+<!-- Counter -->
+<script type="text/javascript" src="~/assets/js/js/waypoints.js"></script>
+<script type="text/javascript" src="~/assets/js/js/jquery.counterup.js"></script>
+<!-- Mixit slider -->
+<script type="text/javascript" src="~/assets/js/js/jquery.mixitup.js"></script>
+<!-- Add fancyBox -->
+<script type="text/javascript" src="~/assets/js/js/jquery.fancybox.pack.js"></script>
+
+<!-- Custom js -->
+<script src="~/assets/js/js/custom.js"></script>
