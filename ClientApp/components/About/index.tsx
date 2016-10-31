@@ -24,7 +24,11 @@ export default class AboutComponent extends React.Component<any, IAboutState> {
             <div className="row">
               <div className="col-md-12">
                 <div className="mu-page-breadcrumb-area">
-                  <h2>{this.state.name}</h2>
+                  <h2>
+                    {
+                      this.state.name
+                    }
+                  </h2>
                   <ol className="breadcrumb">
                     <li><a href="#">Principal</a></li>
                     <li className="active">Acerca de</li>

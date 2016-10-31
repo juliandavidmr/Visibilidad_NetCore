@@ -1,8 +1,44 @@
 import * as React from 'react';
 import { Link } from 'react-router';
 
-export class NavMenu extends React.Component<any, void> {
+interface IMenu {
+	to: string,
+	name: string
+}
+
+interface INavMenuState {
+	title: string;
+	busqueda: string,
+	menu: IMenu[];
+}
+
+export class NavMenu extends React.Component<any, INavMenuState> {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			title: 'Visibilidad',
+			busqueda: '¿Qué desee buscar?',
+			menu: [{
+				to: '/',
+				name: 'Principal'
+			}, {
+				to: '/noticias',
+				name: 'Noticias'
+			}, {
+				to: '/eventos',
+				name: 'Eventos'
+			}, {
+				to: 'login',
+				name: 'Iniciar sesión'
+			}]
+		}
+	}
+
 	public render() {
+		const { menu } = this.state;
+
 		return (
 			<div>
 				<section id="mu-menu">
@@ -19,34 +55,23 @@ export class NavMenu extends React.Component<any, void> {
 								<a className="navbar-brand" href="index.html">
 									<i className="fa fa-university"></i>
 									<span>
-										Titulo
+										{
+											this.state.title
+										}
 									</span>
 								</a>
 							</div>
 							<div id="navbar" className="navbar-collapse collapse">
 								<ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
-									<li>
-										<Link to="/" activeClassName="active">Principal</Link>
-									</li>
-									<li>
-										<Link to="/dashboard" activeClassName="active">Login</Link>
-									</li>
-									<li className="dropdown">
-										<a href="#" className="dropdown-toggle" data-toggle="dropdown">Noticias
-                      <span className="fa fa-angle-down"></span>
-										</a>
-										<ul className="dropdown-menu" role="menu">
-											<li>
-												<Link to="/eventos/recientes" activeClassName="active">Recientes</Link>
-											</li>
-											<li>
-												<Link to="/eventos/categorias" activeClassName="active">Categorias</Link>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<Link to="/eventos" activeClassName="active">Eventos</Link>
-									</li>
+									{
+										menu ? menu.map((item, i) => {
+											return (
+												<li key={i}>
+													<Link to={item.to} activeClassName="active">{item.name}</Link>
+												</li>
+											)
+										}) : ''
+									}
 									<li className="dropdown">
 										<a href="#" className="dropdown-toggle" data-toggle="dropdown">Blog
                       <span className="fa fa-angle-down"></span>
@@ -59,9 +84,6 @@ export class NavMenu extends React.Component<any, void> {
 												<a href="blog-single.html">Blog Single</a>
 											</li>
 										</ul>
-									</li>
-									<li>
-										<Link to="/acercade" activeClassName="active">Contacto</Link>
 									</li>
 									<li>
 										<a href="#" id="mu-search-icon">
@@ -83,7 +105,7 @@ export class NavMenu extends React.Component<any, void> {
 							<div className="row">
 								<div className="col-md-12">
 									<form className="mu-search-form">
-										<input type="search" placeholder="Escriba aquí lo que desee buscar..." />
+										<input type="search" placeholder={this.state.busqueda} />
 									</form>
 								</div>
 							</div>

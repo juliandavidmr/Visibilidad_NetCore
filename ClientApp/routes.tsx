@@ -5,6 +5,8 @@ import Home from './components/Home';
 import FetchData from './components/FetchData';
 import Counter from './components/Counter';
 import About from './components/About';
+import Noticias from './components/Noticias';
+import Eventos from './components/Eventos';
 
 export default
 	<Route component={Layout}>
@@ -14,6 +16,8 @@ export default
 			<Route path='(:startDateIndex)' /> { /* Optional route segment that does not affect NavMenu highlighting */}
 		</Route>
 		<Route path='/acercade' components={{ body: About }} />
+		<Route path='/noticias' components={{ body: Noticias }} />
+		<Route path='/eventos' components={{ body: Eventos }} />
 	</Route>;
 
 // Enable Hot Module Replacement (HMR)

@@ -263,7 +263,6 @@ class Home extends React.Component<any, void> {
 					</div>
 				</section>
 
-
 			</div>
 		);
 	}

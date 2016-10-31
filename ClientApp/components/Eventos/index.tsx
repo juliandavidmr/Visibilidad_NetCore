@@ -1,6 +1,16 @@
-import React, {Component, PropTypes} from 'react';
+import * as React from 'react';
 
-class EventosComponent extends Component {
+interface IEventosState {
+
+}
+
+export default class Eventos extends React.Component<any, IEventosState> {
+
+  constructor(props) {
+    super(props);
+
+  }
+
   render() {
     return (
       <div>
@@ -110,12 +120,6 @@ class EventosComponent extends Component {
                                         <td> 15: 30 </td>
                                         <td> - </td>
                                         <td> Waiting </td>
-                                      </tr>
-                                      <tr>
-                                        <td> 6. Topic 6 </td>
-                                        <td> 15: 30 </td>
-                                        <td> 13: 80 </td>
-                                        <td> - </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -308,9 +312,3 @@ class EventosComponent extends Component {
     );
   }
 }
-
-EventosComponent.propTypes = {
-
-};
-
-export default EventosComponent;
