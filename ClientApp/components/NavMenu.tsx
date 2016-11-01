@@ -2,14 +2,15 @@ import * as React from 'react';
 import { Link } from 'react-router';
 
 interface IMenu {
-	to: string,
-	name: string
+	to: string;
+	name: string;
+	click?: Function;
 }
 
 interface INavMenuState {
-	title: string;
-	busqueda: string,
-	menu: IMenu[];
+	title: string;				// Titulo de la pagina						
+	busqueda: string;			// Placeholder de la barra de busqueda
+	menu: IMenu[];				// Menu a mostrar
 }
 
 export class NavMenu extends React.Component<any, INavMenuState> {
@@ -105,7 +106,9 @@ export class NavMenu extends React.Component<any, INavMenuState> {
 							<div className="row">
 								<div className="col-md-12">
 									<form className="mu-search-form">
-										<input type="search" placeholder={this.state.busqueda} />
+										<input type="search" placeholder={
+											this.state.busqueda
+										} />
 									</form>
 								</div>
 							</div>

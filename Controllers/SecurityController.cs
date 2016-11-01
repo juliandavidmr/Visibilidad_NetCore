@@ -15,7 +15,7 @@ namespace ReactReduxNETCore.Controllers
         return "";
       } else {
         return "Sin token";
-      }     
+      }
     }
   }
 }

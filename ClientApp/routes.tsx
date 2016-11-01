@@ -7,6 +7,7 @@ import Counter from './components/Counter';
 import About from './components/About';
 import Noticias from './components/Noticias';
 import Eventos from './components/Eventos';
+import Login from './components/Login';
 
 export default
 	<Route component={Layout}>
@@ -18,6 +19,7 @@ export default
 		<Route path='/acercade' components={{ body: About }} />
 		<Route path='/noticias' components={{ body: Noticias }} />
 		<Route path='/eventos' components={{ body: Eventos }} />
+		<Route path='/login' components={{ body: Login }} />
 	</Route>;
 
 // Enable Hot Module Replacement (HMR)
