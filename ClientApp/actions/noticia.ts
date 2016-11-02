@@ -56,7 +56,7 @@ export function listar() {
           dispatch(noticia_listar_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(errorListar(error));
         }
@@ -76,7 +76,7 @@ export function registrar(noticia_data) {
           dispatch(noticia_post_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(errorListar(error));
         }

@@ -63,7 +63,7 @@ export function listar() {
           dispatch(cuentacorreo_listar_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(error_listar(error));
         }
@@ -82,7 +82,7 @@ export function registrar(cuentacorreo_data) {
           dispatch(cuentacorreo_post_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(error_registrar(error));
         }

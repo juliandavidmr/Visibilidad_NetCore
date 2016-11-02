@@ -30,7 +30,7 @@ export function login(userData) {
           dispatch(loginSuccess(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
           dispatch(loginError(error));
           throw error;
         }
@@ -39,7 +39,7 @@ export function login(userData) {
         console.log(error);
 
         const err = new Error(error);
-        error.response = response;
+        error.message = JSON.stringify(err);
         dispatch(loginError(error));
         throw error;
       });

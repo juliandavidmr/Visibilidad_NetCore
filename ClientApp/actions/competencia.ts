@@ -56,7 +56,7 @@ export function listar() {
           dispatch(competencia_listar_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(errorListar(error));
         }
@@ -75,7 +75,7 @@ export function registrar(competencia_data) {
           dispatch(competencia_post_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(errorListar(error));
         }

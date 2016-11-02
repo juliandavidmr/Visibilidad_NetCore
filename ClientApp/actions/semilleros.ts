@@ -62,7 +62,7 @@ export function listar() {
           dispatch(semillero_listar_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(error_listar(error));
         }
@@ -81,7 +81,7 @@ export function registrar(semillero_data) {
           dispatch(semillero_post_request(response));
         } else {
           const error = new Error(response.statusText);
-          error.response = response;
+          error.message = JSON.stringify(response);
 
           dispatch(error_post_insert(error));
         }

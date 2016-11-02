@@ -20,6 +20,8 @@ export default
 		<Route path='/noticias' components={{ body: Noticias }} />
 		<Route path='/eventos' components={{ body: Eventos }} />
 		<Route path='/login' components={{ body: Login }} />
+		<Route path='/publicacion/:titulo' components={{ body: Login }} />
+		<Route path='/evento/:id' components={{ body: Login }} />
 	</Route>;
 
 // Enable Hot Module Replacement (HMR)

@@ -23,7 +23,11 @@ export class NavMenu extends React.Component<any, INavMenuState> {
 			busqueda: '¿Qué desee buscar?',
 			menu: [{
 				to: '/',
-				name: 'Principal'
+				name: 'Principal',
+				click: () => {
+					console.log('Recargando vista principal...');
+					window.location.reload();
+				}
 			}, {
 				to: '/noticias',
 				name: 'Noticias'
@@ -31,14 +35,14 @@ export class NavMenu extends React.Component<any, INavMenuState> {
 				to: '/eventos',
 				name: 'Eventos'
 			}, {
-				to: 'login',
+				to: '/login',
 				name: 'Iniciar sesión'
 			}]
 		}
 	}
 
 	public render() {
-		const { menu } = this.state;
+		const { menu, title } = this.state;
 
 		return (
 			<div>
@@ -57,7 +61,7 @@ export class NavMenu extends React.Component<any, INavMenuState> {
 									<i className="fa fa-university"></i>
 									<span>
 										{
-											this.state.title
+											title
 										}
 									</span>
 								</a>
@@ -66,11 +70,19 @@ export class NavMenu extends React.Component<any, INavMenuState> {
 								<ul id="top-menu" className="nav navbar-nav navbar-right main-nav">
 									{
 										menu ? menu.map((item, i) => {
-											return (
-												<li key={i}>
-													<Link to={item.to} activeClassName="active">{item.name}</Link>
-												</li>
-											)
+											if (item.click) {
+												return (
+													<li key={i}>
+														<Link to={item.to} onClick={() => item.click()} activeClassName="active">{item.name}</Link>
+													</li>
+												)
+											} else {
+												return (
+													<li key={i}>
+														<Link to={item.to} activeClassName="active">{item.name}</Link>
+													</li>
+												)
+											}
 										}) : ''
 									}
 									<li className="dropdown">

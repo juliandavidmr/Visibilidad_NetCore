@@ -6,8 +6,11 @@ namespace ReactReduxNETCore.Controllers
   public class Security : Controller
   {
 
-    private readonly string URL = "http://localhost:5000/Menu/Security?token=3123";
+    private readonly string URL = "/Menu/Security?token=3123";
 
+    /**
+      El login de chaira debe redirigir a este metodo
+    */
     public string Capture(string token = null) {
       if (token != null)
       {

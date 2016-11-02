@@ -1,37 +1,65 @@
 import * as React from 'react';
 
 interface ILoginState {
-  /* 
-    Si el estado es True entonces el usuario ya ha iniciado sesion ()
-    Para saber que el usuario ha iniciado sesión se consulta la variable
-    SESSION del LocalStorage.
-  */
-  estado: boolean;
+  /**
+   * Si el estado es True entonces el usuario ya ha iniciado sesion ()
+   * Para saber que el usuario ha iniciado sesión se consulta la variable
+   * SESSION del LocalStorage. 
+   * 
+   * @type {boolean}
+   * @memberOf ILoginState
+   */
+  estado?: boolean;
+
+  /**
+   * Muestra el estado actual del inicio de sesion
+   * 
+   * @type {string}
+   * @memberOf ILoginState
+   */
+  message?: string;
 }
 
 export default class Login extends React.Component<any, ILoginState> {
-  
+
   /* True sí el navegador tiene soporte para LocalStorage */
   localStorage_isSupported: boolean = this.localStorage_config();
-  SESSION_CONSTANT: string = 'SESSION';
+
+  /* Constante para la variable del LocalStorage */
+  private SESSION_CONSTANT: string = 'SESSION';
 
   constructor(props) {
     super(props)
-    
-    this.state = {
-      estado: false      
-    }
 
     if (!this.localStorage_isSupported) {
-      alert('Tu navegador no tiene soporte LocalStorage');
+      // window.alert('Tu navegador no tiene soporte LocalStorage');
+
+      this.state = {
+        estado: false,
+        message: 'Tu navegador no tiene soporte LocalStorage'
+      }
     } else {
       /* Si hay soporte de LocalStorage */
       let session_var: string = localStorage.getItem(this.SESSION_CONSTANT);
 
       if (!session_var && session_var != "") {
-        window.location.href = 'http://www.google.com';
+        this.state = {
+          estado: true,
+          message: 'Redirigiendo al Login de Chaira debido que no se ha iniciado sesion.'
+        }
+
+        setTimeout(() => {
+          window.location.href = 'http://www.google.com';
+        }, 2000);
       } else {
-        window.location.href = '/Menu';
+        this.state = {
+          estado: true,
+          message: 'Redirigiendo al MENU Dashboard. El usuario ya ha iniciado sesion.'
+        }
+
+        setTimeout(() => {
+          window.location.href = '/Menu?date=' + new Date();
+        }, 2000);
       }
     }
   }
@@ -57,14 +85,17 @@ export default class Login extends React.Component<any, ILoginState> {
   }
 
   public render() {
-    const { estado } = this.props;
+    const { estado, message } = this.props;
 
     return (
-      <div>
+      <h1>
         {
           estado ? 'Sesion iniciada.' : 'No se ha iniciado sesion, redirigiendo al menu.'
         }
-      </div>
+        {
+          message ? message : ''
+        }
+      </h1>
     )
   }
 }
